@@ -17,7 +17,7 @@
 
 Association 
 ・has_many:products
-・has_many:purchase histories
+・has_many:purchase history
 
 
 
