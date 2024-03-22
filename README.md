@@ -16,8 +16,8 @@
 | birth_day	        | date   | null: false              |    
 
 Association 
-・belongs_to:products
-・belongs_to:purchase histories
+・has_many:products
+・has_many:purchase histories
 
 
 
@@ -26,7 +26,7 @@ Association
 
 | Column              | Type       | Options                       |   
 |---------------------|------------|------------------------------ |   
-| price               | string     | null: false                   |
+| price               | integer    | null: false                   |
 | product_name        | string     | null: false                   |
 | description_item    | text       | null: false                   |
 | category_id         | integer    | null: false                   |   
@@ -37,7 +37,7 @@ Association
 | user                | references | null: false,foreign_key: true |   
 
 Association  
-・belongs_to:users  
+・belongs_to:user  
 ・has_one:purchases_history  
 
 
@@ -53,10 +53,10 @@ Association
 | address            | string     | null: false                   |    
 | building_name      | string     |                               |    
 | phone_number       | string     | null: false                   |      
-| purchase_histories | references | null: false,foreign_key: true |
+| purchase_history   | references | null: false,foreign_key: true |
 
 Association    
-・has_one:purchase_histories
+・belongs_to:purchase_histories
 
 
 
