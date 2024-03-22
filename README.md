@@ -16,9 +16,8 @@
 | birth_day	        | date   | null: false              |    
 
 Association 
-・has_many :products dependent: :destroy 
-・has_many :purchase histories dependent: :destroy 
-
+・has_one:products
+・has_one:purchase histories
 
 
 
@@ -27,39 +26,41 @@ Association
 
 | Column              | Type       | Options                       |   
 |---------------------|------------|------------------------------ |   
-| Product name        | string     | null: false                   |
-| description item    | text       | null: false                   |
+| image               | string     | null: false                   |
+| product_name        | string     | null: false                   |
+| description_item    | text       | null: false                   |
 | category_id         | integer    | null: false                   |   
 | condition_id        | integer    | null: false                   |   
-| shipping_charges_id | integer    | null: false                   |   
-| prefectures_id      | integer    | null: false                   |   
+| shipping_charge_id  | integer    | null: false                   |   
+| prefecture_id       | integer    | null: false                   |   
 | shipping_date _id   | integer    | null: false                   |   
 | user                | references | null: false,foreign_key: true |   
 
 Association  
-・belongs_to:user  
-・has_one:purchase_history  
+・belongs_to:users  
+・has_one:purchases_history  
 
 
 
-## destinationテーブル    
+
+## destinationsテーブル    
 
 | Column         | Type       | Options                       |    
 |--------------- |----------- |------------------------------ |    
-| prefectures_id | integer    | null: false                   |    
+| postal_code    | string     | null: false                   |
+| prefecture_id  | integer    | null: false                   |    
 | city           | string     | null: false                   |    
 | address        | string     | null: false                   |    
 | building_name  | string     |                               |    
-| phone_number   | string     | null: false                   |    
-| user           | references | null: false,foreign_key: true |    
+| phone_number   | string     | null: false                   |      
 
-Association  
-・belongs_to:user  
+Association    
 ・has_one:purchase_histories
 
 
 
-## purchase historyテーブル  
+
+## purchase historiesテーブル  
 
 | Column     | Type       | Options                       |  
 |------------|----------- |------------------------------ |  
@@ -69,4 +70,4 @@ Association
 Association  
 ・belongs_to:user  
 ・belongs_to:product  
-・belongs_to:destination
+・has_one:destination
