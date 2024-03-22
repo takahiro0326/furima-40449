@@ -17,44 +17,26 @@
 
 Association
 ・has_many :products dependent: :destroy
-・belongs_to :destination dependent: :destroy
-・belongs_to :card dependent: :destroy
+・has_many :destination dependent: :destroy
+
 
 
 
 
 ## productテーブル  
 
-| Column           | Type       | Options     |  
-|------------------|------------|------------ |  
-| product_name     | string     | null: false |  
-| price            | string     | null: false |  
-| description      | string     | null: false |  
-| seller_name      | string     | null: false |  
-| category         | string     | null: false |  
-| condition        | string     | null: false |  
-| shipping_charges | references | null: false |  
-| delivery_region  | references | null: false |  
-| shipping_date    | references | null: false |  
-| user_id          | string     | null: false,foreign_key: true |  
+| Column              | Type       | Options     |  
+|---------------------|------------|------------ |  
+| category_id         | integer    | null: false |  
+| condition_id        | integer    | null: false |  
+| shipping_charges_id | integer    | null: false |  
+| delivery_region_id  | integer    | null: false |  
+| shipping_date _id   | integer    | null: false |  
+| user                | references | null: false,foreign_key: true |  
 
 Association
 ・belongs_to:user
-
-
-
-
-## Cardテーブル  
-
-| Column      | Type    | Options                       |  
-|-------------|---------|------------------------------ |  
-| customer_id | string  | nul: false                    |  
-| card_id     | string  | null: false                   |  
-| user_id     | integer | null: false,foreign_key: true |  
-
-Association
-・belongs_to:user
-
+・has_one:purchase history
 
 
 
@@ -62,13 +44,24 @@ Association
 
 | Column        | Type    | Options                      |  
 |---------------|-------- |----------------------------- |  
-| post_code     | string  | null: false                  |  
 | prefectures   | string  | null: false                  |  
 | city          | string  | null: false                  |  
 | address       | string  | null: false                  |  
-| building_name | string  | null: false                  |  
+| building_name | string  |                              |  
 | phone_number  | string  | null: false                  |  
 | user_id       | integer | null: false,foreign_key: true|  
 
 Association
 ・belongs_to:user
+
+
+
+## purchase historyテーブル
+| Column        | Type    | Options                       |
+|---------------|-------- |------------------------------ |
+| user_id       | integer | null: false,foreign_key: true |
+| product_id    | integer | null: false,foreign_key: true |
+
+Association
+・belongs_to:user
+・belongs_to:product
