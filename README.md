@@ -16,8 +16,8 @@
 | birth_day	        | date   | null: false              |    
 
 Association 
-・has_one:products
-・has_one:purchase histories
+・belongs_to:products
+・belongs_to:purchase histories
 
 
 
@@ -26,14 +26,14 @@ Association
 
 | Column              | Type       | Options                       |   
 |---------------------|------------|------------------------------ |   
-| image               | string     | null: false                   |
+| price               | string     | null: false                   |
 | product_name        | string     | null: false                   |
 | description_item    | text       | null: false                   |
 | category_id         | integer    | null: false                   |   
 | condition_id        | integer    | null: false                   |   
 | shipping_charge_id  | integer    | null: false                   |   
 | prefecture_id       | integer    | null: false                   |   
-| shipping_date _id   | integer    | null: false                   |   
+| shipping_date_id    | integer    | null: false                   |   
 | user                | references | null: false,foreign_key: true |   
 
 Association  
@@ -45,14 +45,15 @@ Association
 
 ## destinationsテーブル    
 
-| Column         | Type       | Options                       |    
-|--------------- |----------- |------------------------------ |    
-| postal_code    | string     | null: false                   |
-| prefecture_id  | integer    | null: false                   |    
-| city           | string     | null: false                   |    
-| address        | string     | null: false                   |    
-| building_name  | string     |                               |    
-| phone_number   | string     | null: false                   |      
+| Column             | Type       | Options                       |    
+|------------------- |----------- |------------------------------ |    
+| postal_code        | string     | null: false                   |
+| prefecture_id      | integer    | null: false                   |    
+| city               | string     | null: false                   |    
+| address            | string     | null: false                   |    
+| building_name      | string     |                               |    
+| phone_number       | string     | null: false                   |      
+| purchase_histories | references | null: false,foreign_key: true |
 
 Association    
 ・has_one:purchase_histories
