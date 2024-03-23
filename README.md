@@ -4,71 +4,71 @@
 
 ## usersテーブル
 
-| Column            | Type   | Options                  |
-|-------------------|--------|------------------------- |
-| nickname          |	string | null: false              |
-| email             | string | null: false,unique: true |
-| encrypted_password|	string | null: false              |
-| family_name       |	string | null: false              |
-| first_name        |	string | null: false              |
-| family_name_kana  |	string | null: false              |
-| first_name_kana   |	string | null: false              |
-| birth_day	        | date   | null: false              |
+| Column            | Type   | Options                  |  
+|-------------------|--------|------------------------- |  
+| nickname          |	string | null: false              |    
+| email             | string | null: false,unique: true |    
+| encrypted_password|	string | null: false              |    
+| family_name       |	string | null: false              |    
+| first_name        |	string | null: false              |    
+| family_name_kana  |	string | null: false              |    
+| first_name_kana   |	string | null: false              |    
+| birth_day	        | date   | null: false              |    
 
-Association
-・has_many :products dependent: :destroy
-・belongs_to :destination dependent: :destroy
-・belongs_to :card dependent: :destroy
-
-
-
-
-## productテーブル
-
-| Column           | Type       | Options     |
-|------------------|------------|------------ |
-| product_name     | string     | null: false |
-| price            | string     | null: false |
-| description      | string     | null: false |
-| seller_name      | string     | null: false |
-| category         | string     | null: false |
-| condition        | string     | null: false |
-| shipping_charges | references | null: false |
-| delivery_region  | references | null: false |
-| shipping_date    | references | null: false |
-| user_id          | string     | null: false,foreign_key: true |
-
-Association
-・belongs_to:user
+Association 
+・has_many:products
+・has_many:purchase_histories
 
 
 
 
-## Cardテーブル（PAY.JPからのトークンを管理）
+## productsテーブル   
 
-| Column      | Type    | Options                       |
-|-------------|---------|------------------------------ |
-| customer_id | string  | nul: false                    |
-| card_id     | string  | null: false                   |
-| user_id     | integer | null: false,foreign_key: true |
+| Column              | Type       | Options                       |   
+|---------------------|------------|------------------------------ |   
+| price               | integer    | null: false                   |
+| product_name        | string     | null: false                   |
+| description_item    | text       | null: false                   |
+| category_id         | integer    | null: false                   |   
+| condition_id        | integer    | null: false                   |   
+| shipping_charge_id  | integer    | null: false                   |   
+| prefecture_id       | integer    | null: false                   |   
+| shipping_date_id    | integer    | null: false                   |   
+| user                | references | null: false,foreign_key: true |   
 
-Association
-・belongs_to:user
+Association  
+・belongs_to:user  
+・has_one:purchase_history  
 
 
 
 
-## destinationテーブル
+## destinationsテーブル    
 
-| Column        | Type    | Options                      |
-|---------------|-------- |----------------------------- |
-| post_code     | string  | null: false                  |
-| prefectures   | string  | null: false                  |
-| city          | string  | null: false                  |
-| address       | string  | null: false                  |
-| building_name | string  | null: false                  |
-| phone_number  | string  | null: false                  |
-| user_id       | integer | null: false,foreign_key: true|
+| Column             | Type       | Options                       |    
+|------------------- |----------- |------------------------------ |    
+| postal_code        | string     | null: false                   |
+| prefecture_id      | integer    | null: false                   |    
+| city               | string     | null: false                   |    
+| address            | string     | null: false                   |    
+| building_name      | string     |                               |    
+| phone_number       | string     | null: false                   |      
+| purchase_history   | references | null: false,foreign_key: true |
 
-Association
-・belongs_to:user
+Association    
+・belongs_to:purchase_history
+
+
+
+
+## purchase_historiesテーブル  
+
+| Column     | Type       | Options                       |  
+|------------|----------- |------------------------------ |  
+| user       | references | null: false,foreign_key: true |  
+| product    | references | null: false,foreign_key: true |  
+
+Association  
+・belongs_to:user  
+・belongs_to:product  
+・has_one:destination
