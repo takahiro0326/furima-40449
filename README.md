@@ -17,7 +17,7 @@
 
 Association 
 ・has_many:products
-・has_many:purchase history
+・has_many:purchase_histories
 
 
 
@@ -38,7 +38,7 @@ Association
 
 Association  
 ・belongs_to:user  
-・has_one:purchases_history  
+・has_one:purchase_history  
 
 
 
@@ -56,12 +56,12 @@ Association
 | purchase_history   | references | null: false,foreign_key: true |
 
 Association    
-・belongs_to:purchase_histories
+・belongs_to:purchase_history
 
 
 
 
-## purchase historiesテーブル  
+## purchase_historiesテーブル  
 
 | Column     | Type       | Options                       |  
 |------------|----------- |------------------------------ |  
