@@ -4,24 +4,6 @@ class ProductsController < ApplicationController
   before_action :check_user, only: [:edit, :update, :destroy]
   before_action :check_soldout, only: [:edit, :update, :destroy]
 
-  def index
-    @products = Product.order('created_at DESC')
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-    if @product.update(product_params)
-      redirect_to @product
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
   def new
     @product = Product.new
   end
@@ -32,14 +14,6 @@ class ProductsController < ApplicationController
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    if @product.destroy
-      redirect_to root_path
-    else
-      redirect_to @product, alert: "Failed to delete product."
     end
   end
 
