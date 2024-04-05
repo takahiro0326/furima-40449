@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root to: "products#index"
   
   resources :products do
-    post 'orders', to: 'orders#create'
+    #post 'orders', to: 'orders#create'
   end
 end
