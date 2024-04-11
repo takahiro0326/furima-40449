@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :product do
-    association :user
 
     product_name { '・ギター' }
     description_item { 'これはテスト用のアイテムです。→ギター' }
@@ -10,6 +9,8 @@ FactoryBot.define do
     prefecture_id { 2 }
     shipping_date_id { 2 }
     price { 500 }
+
+    association :user
 
     after(:build) do |item|
       item.image.attach(io: File.open('spec/fixtures/ダウンロード.jpeg'), filename: 'test_image.png')
