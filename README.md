@@ -43,7 +43,7 @@ Association
 
 
 
-## destinationsテーブル    
+## shipping_adresseseテーブル    
 
 | Column             | Type       | Options                       |    
 |------------------- |----------- |------------------------------ |    
@@ -53,15 +53,15 @@ Association
 | address            | string     | null: false                   |    
 | building_name      | string     |                               |    
 | phone_number       | string     | null: false                   |      
-| purchase_history   | references | null: false,foreign_key: true |
+| order   | references | null: false,foreign_key: true |
 
 Association    
-・belongs_to:purchase_history
+・belongs_to:order
 
 
 
 
-## purchase_historiesテーブル  
+## ordersテーブル  
 
 | Column     | Type       | Options                       |  
 |------------|----------- |------------------------------ |  
@@ -71,4 +71,4 @@ Association
 Association  
 ・belongs_to:user  
 ・belongs_to:product  
-・has_one:destination
+・has_one:shipping_address

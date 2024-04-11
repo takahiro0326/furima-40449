@@ -13,6 +13,7 @@ class Prefecture < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :products
+  has_many :shipping_address
 end
 
 Prefecture.data = Prefecture::PREFECTURE_NAMES.each_with_index.map do |name, index|
